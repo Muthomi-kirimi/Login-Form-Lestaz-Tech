@@ -1,4 +1,4 @@
-import Login from "./assets/pages/loginPage/login";
+import Login from "./assets/pages/loginPage/Login";
 import Forget from "./assets/pages/forgetPage/Forget";
 import Register from "./assets/pages/registerPage/Register";
 import { Routes, Route } from "react-router-dom";
