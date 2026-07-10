@@ -1,9 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
 import "./login.css";
+import { Link,useNavigate } from  "react-router-dom" ;
+
+
 
 const Login = () => {
-
+      
+    const navigate=useNavigate();
     const [formData, setFormData]= useState({
         email: "",
         password: "",
@@ -50,7 +54,7 @@ const Login = () => {
       return;
     }
 
-    alert("Login Successful");
+    navigate("/home");
 
     console.log(formData);
 
@@ -65,7 +69,7 @@ const Login = () => {
 
      <div className="login-container">
       <form className="login-card" onSubmit={handleSubmit}>
-
+           
         <h2>Login to Lestaz Tech</h2>
 
         <div className="input-group">
@@ -103,6 +107,22 @@ const Login = () => {
         <button type="submit">
           Login
         </button>
+
+
+<div className="login-links">
+
+    <Link to="/forget" className="forgot-link">
+        Forgot Password?
+    </Link>
+
+    <p className='regiter-section'>
+        Don't have an account?
+        <Link to="/register" className="register-link">
+            Register
+        </Link>
+    </p>
+
+     </div>
 
       </form>
     </div>

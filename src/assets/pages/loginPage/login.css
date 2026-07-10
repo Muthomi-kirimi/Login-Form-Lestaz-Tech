@@ -65,3 +65,41 @@ button{
 button:hover{
     background:#005fd1;
 }
+
+.forgot-link {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    text-align: right;
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease, text-decoration 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+
+.register-section {
+    margin-top: 20px;
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+}
+
+.register-link {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}

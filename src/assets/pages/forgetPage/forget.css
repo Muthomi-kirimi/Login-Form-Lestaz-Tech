@@ -1,4 +1,4 @@
-.register-container {
+.forgot-container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -7,24 +7,30 @@
     padding: 20px;
 }
 
-.register-card {
+.forgot-card {
     width: 100%;
-    max-width: 450px;
-    background: white;
+    max-width: 420px;
+    background: #fff;
     padding: 35px;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-.register-card h2 {
+.forgot-card h2 {
     text-align: center;
     color: #1f2937;
 }
 
-.register-card input {
+.forgot-card p {
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+}
+
+.forgot-card input {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -33,11 +39,11 @@
     transition: .3s;
 }
 
-.register-card input:focus {
+.forgot-card input:focus {
     border-color: #2563eb;
 }
 
-.register-card button {
+.forgot-card button {
     padding: 12px;
     border: none;
     border-radius: 8px;
@@ -48,22 +54,18 @@
     transition: .3s;
 }
 
-.register-card button:hover {
+.forgot-card button:hover {
     background: #1d4ed8;
 }
 
-.register-card p {
+.forgot-card a {
     text-align: center;
-    color: #555;
-}
-
-.register-card a {
     text-decoration: none;
     color: #2563eb;
     font-weight: 600;
 }
 
-.register-card a:hover {
+.forgot-card a:hover {
     text-decoration: underline;
 }
 
