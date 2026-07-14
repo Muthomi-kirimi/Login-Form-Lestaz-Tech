@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const Register = () => {
    
+  const API_URL=import.meta.env.VITE_API_URL;
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -62,8 +64,7 @@ const Register = () => {
 
   };
 
-  const handleSubmit = (e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validate();
@@ -72,11 +73,27 @@ const Register = () => {
       setErrors(validationErrors);
       return;
     }
+    try {
+    const response = await axios.post(
+      `${API_URL}/api/auth/register`,
+      {
+        email: formData.email,
+        password: formData.password,
+      }
+    );
+      
+     alert(response.data.message);
+
+     console.log(response.data);
 
     navigate("/");
-    alert("Registration Successful");
+  } catch (error) {
+   alert(
+    error.response?.data.message || "Registration failed"
+   );
 
-    console.log(formData);
+    console.error(error);
+  }
 
     setFormData({
       email: "",

@@ -2,11 +2,12 @@ import React from 'react'
 import { useState } from 'react';
 import "./login.css";
 import { Link,useNavigate } from  "react-router-dom" ;
+import axios from 'axios';
 
 
+const Login =  () => {
 
-const Login = () => {
-      
+  const API_URL=import.meta.env.VITE_API_URL;
     const navigate=useNavigate();
     const [formData, setFormData]= useState({
         email: "",
@@ -33,18 +34,19 @@ const Login = () => {
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
         ) {
             newErrors.email="Enter a valid email";
+            
         }
 
 
         if(!formData.password) {
             newErrors.password="Password is required";
-        } else if (formData.password.length < 8){
-            newErrors.password="Password must be at least 8 characters";
+        } else if (formData.password.length < 6){
+            newErrors.password="Password must be at least 6 characters";
         }
         return newErrors;
     };
 
-    const handleSubmit=(e) =>{
+    const handleSubmit= async (e) =>{
         e.preventDefault();
         
         const validationErrors=validate();
@@ -54,11 +56,35 @@ const Login = () => {
       return;
     }
 
-    navigate("/home");
+    try{
+      const response = await axios.post(
+        `${API_URL}/api/auth/login`,
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
-    console.log(formData);
+      //To save JQWT Token
+      localStorage.setItem("token", response.data.token);
 
-    setFormData({
+      //To save user Info
+      localStorage.setItem("user", 
+        JSON.stringify(response.data.user)
+      );
+      
+      navigate("/home");
+
+    } catch (error) {
+
+      alert(error.response?.data?.message || "Login Failed");
+      
+    }
+        setEmail("");
+      setPassword("");
+      console.error(error);
+  
+      setFormData({
       email: "",
       password: "",
     });

@@ -1,19 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import "./forget.css"
 
 
-const Forget = () => {
+const Forget =  () => {
+
+  const API_URL=import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    /*try{
+      const response= await axios.post(
+        "http://localhost:5000/api/auth/forgot-password",
+        {
+          email
+        }
+      );
+   
+      alert(response.data.message );
+
+    } catch (error) {
+      alert(
+        error.response?.data?.message || "Unable to send reset link"
+      )
+    }
 
     if (!email.trim()) {
       setError("Email is required");
       return;
-    }
+    }  */
 
     const emailRegex =
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -23,11 +43,26 @@ const Forget = () => {
       return;
     }
 
-    setError("");
+ try{
+      const response= await axios.post(
+        `${API_URL}/api/auth/forget`,
+        {
+          email
+        }
+      );
+   
+      alert(response.data.message );
 
-    alert(
-      "Password reset link sent to your email"
-    );
+      //navigate("/ResetPassword");
+
+    } catch (error) {
+      alert(
+        error.response?.data?.message || "Unable to send reset link"
+      )
+    }
+
+
+    setError("");
 
     setEmail("");
   };
