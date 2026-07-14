@@ -80,8 +80,7 @@ const Login =  () => {
       alert(error.response?.data?.message || "Login Failed");
       
     }
-        setEmail("");
-      setPassword("");
+        
       console.error(error);
   
       setFormData({
