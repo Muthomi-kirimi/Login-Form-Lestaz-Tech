@@ -81,7 +81,7 @@ const Login =  () => {
       
     }
         
-      console.error(error);
+      console.error(e);
   
       setFormData({
       email: "",
