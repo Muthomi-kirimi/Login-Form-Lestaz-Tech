@@ -10,7 +10,7 @@ const { register,
 
 router.post("/register", register);
 router.post("/login", login);
-router.post("/forgot-password", forgotPassword);
+router.post("/forget", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
 
 module.exports = router;
