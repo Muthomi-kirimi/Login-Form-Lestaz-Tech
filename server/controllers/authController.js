@@ -41,13 +41,8 @@ const register = async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({
-            message: "Internal server error",
-        });
-        res.status(409).json({
-            message: "Email is already registered", 
-        });
-
+        res.status(500).json(err);
+        
     }
 };
 
@@ -207,6 +202,7 @@ const login = async (req, res) => {
 
 
         res.status(500).json({
+            message: err.message,
             message: "No account found.Please Register",
     
         });

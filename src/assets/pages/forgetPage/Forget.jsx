@@ -14,26 +14,7 @@ const Forget =  () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    /*try{
-      const response= await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
-        {
-          email
-        }
-      );
-   
-      alert(response.data.message );
-
-    } catch (error) {
-      alert(
-        error.response?.data?.message || "Unable to send reset link"
-      )
-    }
-
-    if (!email.trim()) {
-      setError("Email is required");
-      return;
-    }  */
+    
 
     const emailRegex =
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
