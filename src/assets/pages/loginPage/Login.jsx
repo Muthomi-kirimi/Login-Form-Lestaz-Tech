@@ -78,10 +78,11 @@ const Login =  () => {
     } catch (error) {
 
       alert(error.response?.data?.message || "Login Failed");
-      
+      console.error(error);
+
     }
         
-      console.error(e);
+     
   
       setFormData({
       email: "",

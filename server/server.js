@@ -7,8 +7,11 @@ require("dotenv").config();
 
 const app=express();
 
+
 app.use(cors({
-    origin: "https://login-form-lestaz-tech.vercel.app",
+    origin: ["https://login-form-lestaz-tech.vercel.app",
+
+        "http://localhost:5177" ],
     credentials: true
 }));
 app.use(express.json());

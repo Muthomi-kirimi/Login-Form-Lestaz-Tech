@@ -11,6 +11,9 @@ const Forget =  () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
+   //console.log("API_URL =", API_URL);
+   //console.log(import.meta.env);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

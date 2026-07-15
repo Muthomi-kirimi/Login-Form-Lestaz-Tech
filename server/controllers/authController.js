@@ -48,7 +48,7 @@ const register = async (req, res) => {
 
 //Forgot pasword
 
-const forgotPassword = async (req, res) => {
+const forget = async (req, res) => {
 
     const { email } = req.body;
 
@@ -77,7 +77,7 @@ const forgotPassword = async (req, res) => {
         .eq("id", user.id);
 
     const resetLink =
-        `http://localhost:5173/reset-password/${token}`;
+        `http://localhost:5177/reset-password/${token}`;
 
     await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -214,6 +214,6 @@ const login = async (req, res) => {
 module.exports = {
     register,
     login,
-    forgotPassword,
+    forget,
     resetPassword
 };
