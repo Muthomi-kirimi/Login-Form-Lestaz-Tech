@@ -77,8 +77,8 @@ const forget = async (req, res) => {
         .eq("id", user.id);
 
     const resetLink =
-        `http://localhost:5177/reset-password/${token}`;
-
+        `${process.env.FRONTEND_URL}/reset-password/${token}`;
+        
     await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: email,
